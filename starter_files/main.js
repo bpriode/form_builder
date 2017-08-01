@@ -99,14 +99,25 @@ let formData = [
 let wrapper = document.getElementById("fields");
 
 for (var i = 0; i < formData.length; i++) {
+  if(formData[i].options <= 0){
 
-let input = document.createElement("input");
+      let input = document.createElement("input");
 
-input.setAttribute("type", "text");
-input.setAttribute("label", "First Name");
-input.setAttribute("id", "user-first-name");
-input.setAttribute("icon", "fa-user");
-input.setAttribute("options", []);
+      input.setAttribute("type", formData[i].type);
+      input.setAttribute("placeholder", formData[i].label);
+      input.setAttribute("id", formData[i].id);
 
-wrapper.appendChild(input);
+      wrapper.appendChild(input);
+  } else {
+        for (var j = 0; i < formData[i].options.length; i++) {
+          let select = document.createElement("select");
+
+          select.setAttribute("type", formData[i].type);
+          select.setAttribute("placeholder", formData[i].label);
+          select.setAttribute("id", formData[i].id);
+          select.setAttribute("options", formData[i].options);
+
+          wrapper.appendChild(select);
+        }
+    }
 }
