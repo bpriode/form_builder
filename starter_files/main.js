@@ -96,7 +96,7 @@ let formData = [
 
 
 // -------- Your Code Goes Below this Line --------
-let wrapper = document.getElementById("fields");
+let container = document.getElementById("fields");
 
 for (var i = 0; i < formData.length; i++) {
   if(formData[i].options <= 0){
@@ -106,18 +106,18 @@ for (var i = 0; i < formData.length; i++) {
       input.setAttribute("type", formData[i].type);
       input.setAttribute("placeholder", formData[i].label);
       input.setAttribute("id", formData[i].id);
+      input.setAttribute("span", formData[i].icon);
 
-      wrapper.appendChild(input);
-  } else {
-        for (var j = 0; i < formData[i].options.length; i++) {
-          let select = document.createElement("select");
+      container.appendChild(input);
+  }else {
+    let select = document.createElement("select");
 
-          select.setAttribute("type", formData[i].type);
-          select.setAttribute("placeholder", formData[i].label);
-          select.setAttribute("id", formData[i].id);
-          select.setAttribute("options", formData[i].options);
-
-          wrapper.appendChild(select);
-        }
+    // let template=
+    // `
+    //   <select>
+    //     <option value=formData[i].options.label></option>
+    //   </select>
+    // `;
+    container.appendChild(select);
     }
 }
