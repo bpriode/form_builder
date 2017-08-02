@@ -106,18 +106,20 @@ for (var i = 0; i < formData.length; i++) {
       input.setAttribute("type", formData[i].type);
       input.setAttribute("placeholder", formData[i].label);
       input.setAttribute("id", formData[i].id);
-      input.setAttribute("span", formData[i].icon);
 
       container.appendChild(input);
   }else {
     let select = document.createElement("select");
+    select.setAttribute("placeholder", formData[i].label);
 
-    // let template=
-    // `
-    //   <select>
-    //     <option value=formData[i].options.label></option>
-    //   </select>
-    // `;
     container.appendChild(select);
+
+      for (var j = 0; j < formData[i].options.length; j++) {
+        let option = document.createElement("option")
+        option.setAttribute("label", formData[i].options[j].label);
+        option.setAttribute("value", formData[i].options[j].value);
+        select.appendChild(option);
+      }
     }
+
 }
